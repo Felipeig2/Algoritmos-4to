@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
            
           printf("%d ", matriz[i][j]);   
         } 
-        printf("\n\n");
+        printf("\n\ns");
     }
 printf("\n");
     return 0;
