@@ -5,7 +5,7 @@
 
 char matriz[20][20];
 
-void armarMatriz() {
+void completarMatriz() {
     for (int i = 0; i < 20; i++) {
         for (int j = 0; j < 20; j++) {
             if (matriz[i][j] == ' ') {
@@ -41,7 +41,7 @@ void ponerLaPalabra(char *dinoElegido) {
     }
 }
 
-void Calculos(char *dino1, char *dino2) {
+void crearMatriz(char *dino1, char *dino2) {
 
     for (int i = 0; i < 20; i++) {
         for (int j = 0; j < 20; j++) {
@@ -52,7 +52,7 @@ void Calculos(char *dino1, char *dino2) {
     ponerLaPalabra(dino1);
     ponerLaPalabra(dino2);
 
-    armarMatriz();
+    completarMatriz();
 }
 
 void elegirDino() {
@@ -67,7 +67,7 @@ void elegirDino() {
     char *dino1 = arrayDinos[num1];
     char *dino2 = arrayDinos[num2];
 
-    Calculos(dino1, dino2);
+    crearMatriz(dino1, dino2);
 }
 
 int main() {
