@@ -1,15 +1,17 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include<stdio.h>
+#include<stdlib.h>
 
-    int main() {
-        char enter;
-        int i = -1;
-    do{
-        scanf("%c", &enter);
-        i++;
-    }
-    while(enter == '\n');
-        printf("La cantidad de lineas totales es: %i", i);
+int main(){
+    int lineas = -1;
+    char a;
     
-        return 0;   
-    }
+printf("Escribe un codigo, y te dire cuantas lineas tiene. Frenara cuando escribas algo distinto a un enter. ");
+    scanf("%c", &a);
+    do{
+        scanf("%c", &a);
+        a = '';
+    } while(a == '\n');
+
+    printf("La cantidad de lineas totales es: %d", lineas);
+    return 0;
+}
