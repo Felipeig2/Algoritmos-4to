@@ -11,4 +11,4 @@ int main(void){
     fclose(fp);
     return 0;
 }
-/* fopen - r = read | w = write | a = append - fclose - fscanf -  */
+/* fopen - r = read | w = write | a = append - fclose - fscanf - fprintf - fseek - fgets - putchar  */
