@@ -44,11 +44,9 @@ int main(void){
     scanf("%d", &choise);
     getchar();
     switch(choise){
-
         case 1:
         add_note();
         break;
-    
         case 2:
         get_notes();
         break;
