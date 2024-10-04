@@ -30,16 +30,16 @@ int main(void){
     imprimir_matriz(matriz);
 
     for(int i = 0; i < 9; i++){
-        scanf("%d,%d", &y, &x);
+        scanf("%d,%d", &x, &y);
         if(i % 2 == 0){
-            matriz[x][y] = "[X]";
+            matriz[y][x] = "[X]";
         }
         else{
-            matriz[x][y] = "[O]";
+            matriz[y][x] = "[O]";
         }
         system("cls");
         imprimir_matriz(matriz);
-        for(int i = 0; i < 3; i++) { 
+        for(int i = 0; i < 3; i++) {
             if(matriz[i][0] == "[X]" && matriz[i][1] == "[X]" && matriz[i][2] == "[X]" || matriz[0][i] == "[X]" && matriz[1][i] == "[X]" && matriz[2][i] == "[X]" || matriz[0][0] == "[X]" && matriz[1][1] == "[X]" && matriz[2][2] == "[X]" || matriz[0][2] == "[X]" && matriz[1][1] == "[X]" && matriz[2][0] == "[X]"){
                 printf("Ha ganado el jugador X");
                 return 0;
