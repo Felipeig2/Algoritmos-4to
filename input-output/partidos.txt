@@ -1,0 +1,5 @@
+38,26,8,4,Barcelona
+38,25,9,4,RealMadrid
+38,23,10,5,AtleticoMadrid
+38,20,12,6,Sevilla
+38,15,10,13Valencia
