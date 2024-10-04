@@ -1,3 +1,0 @@
-hola 1 2
-chau 2 3
-jeu 4 5
