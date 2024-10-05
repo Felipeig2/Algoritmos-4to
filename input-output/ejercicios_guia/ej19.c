@@ -1,76 +1,86 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
 
-
-void menu(FILE *fp, char palabraCompleta[5], char palabraCompletandose[5], int vidas){
-    char letra;
-    for(int i = 0; i < 5; i++){
-        fscanf(fp, " %c", &letra);
-        palabraCompleta[i] = letra;
-        palabraCompletandose[i] = '_';  
-    }
-    printf("Escribe una letra, y yo te diré si es parte de la palabra que tienes que adivinar\n");
-    printf("Tienes %d vidas, no las desperdicies\n", vidas); 
-}
-
-int main(void){
-    
+int main(void) {
+    srand(time(NULL));
     FILE *fp = fopen("ahorcado.txt", "r");
-    if (fp == NULL) {
-        printf("Error al abrir el archivo.\n");
-        return 1;
+    char palabras[100][20];
+    char letra;
+    int victoria = 0;
+    int tamaño =  0;
+    int vidas = 5;
+    char array_incorrectas[100];
+    int array_indice = 0;
+
+    for (int i = 0; i < 100; i++) {
+        fscanf(fp, "%s", palabras[i]);
     }
 
-    char palabraCompleta[5];
-    char palabraCompletandose[5];
-    char letraUsuario;
-    int vidas = 5;  
-    int victoria = 0;
+    while (1) {
+        int numero_a = rand() % 93; 
+        char *palabraCompleta = palabras[numero_a];
+        char palabraCompletandose[10];
+        victoria = 0;
+        tamaño = strlen(palabraCompleta);
+        printf("Hey, estas jugando al ahorcado. La palabra tiene %d letras. Inténtalo!\n", tamaño);
 
-  
-    menu(fp, palabraCompleta, palabraCompletandose, vidas);  
-
-    while(vidas > 0){
-        if(victoria == 1){
-            victoria = 0;
-            menu(fp, palabraCompleta, palabraCompletandose, vidas);  
+        for (int i = 0; i < tamaño; i++) {
+            palabraCompletandose[i] = '_';
         }
 
-        int encontrada = 0;  
+        while (victoria != 1) {
+            int encontrada = 0;
 
-        printf("Te quedan %d vidas\n", vidas);
-        printf("Ingresa una letra: ");
-        scanf(" %c", &letraUsuario);
+            printf("Vidas: %d\nPalabra: %s\n", vidas, palabraCompletandose);
+            scanf(" %c", &letra);
+            system("clear");
 
-        for (int i = 0; i < 5; i++) {
-            if(palabraCompleta[i] == letraUsuario){
-                palabraCompletandose[i] = letraUsuario;
-                encontrada = 1;
+            for (int i = 0; i < tamaño; i++) {
+                if (letra == palabraCompleta[i]) {
+                    palabraCompletandose[i] = palabraCompleta[i];
+                    encontrada = 1;
+                }
+            }
+            
+            if (encontrada == 1) {
+                printf("Muy bien! Has encontrado una letra: %c\n", letra);
+            } else {
+                printf("Nop, la letra %c no es parte de la palabra\n", letra);
+                array_incorrectas[array_indice] = letra;
+                array_indice++;
+                vidas--;
+            }
+
+            int completada = 1;
+            for (int i = 0; i < tamaño; i++) {
+                if (palabraCompletandose[i] == '_') {
+                    completada = 0;
+                    break;
+                }
+            }
+
+            if (completada == 1) {
+                victoria = 1;
+                printf("¡Felicidades! Has completado la palabra: %s\n", palabraCompletandose);
+            }
+
+            if (vidas == 0) {
+                printf("Perdiste! La palabra era: %s\n", palabraCompleta);
+                return 0;
+            }
+
+            if (array_indice != 0) {
+                printf("Las letras incorrectas:");
+                for (int i = 0; i < array_indice; i++) {
+                    printf(" %c ", array_incorrectas[i]);
+                }
+                printf("\n");
             }
         }
-
-        system("clear");
-
-        if (encontrada) {
-            printf("Bien! La letra %c es parte de la palabra.\n", letraUsuario);
-        } else {
-            printf("No, no era parte de la palabra. Perdiste una vida. Inténtalo de nuevo.\n");
-            vidas--; 
-        }
-
-        printf("Palabra: %s\n", palabraCompletandose);
-
-        if (palabraCompletandose[0] != '_' && palabraCompletandose[1] != '_' &&
-            palabraCompletandose[2] != '_' && palabraCompletandose[3] != '_' &&
-            palabraCompletandose[4] != '_') {
-            printf("Terminaste el juego!!! La palabra completa era: %s\n", palabraCompleta);
-            victoria = 1;
-        }
     }
 
-    printf("Perdiste, te quedaste sin vidas. La palabra era: %s\n", palabraCompleta);
-
-    fclose(fp);  
-
+    fclose(fp);
     return 0;
 }
