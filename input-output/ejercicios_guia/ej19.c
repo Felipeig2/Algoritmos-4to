@@ -13,23 +13,22 @@ int main(void) {
     int vidas = 5;
     char array_incorrectas[100];
     int array_indice = 0;
-
     for (int i = 0; i < 100; i++) {
         fscanf(fp, "%s", palabras[i]);
     }
-
     while (1) {
         int numero_a = rand() % 93; 
         char *palabraCompleta = palabras[numero_a];
         char palabraCompletandose[10];
         victoria = 0;
         tamaño = strlen(palabraCompleta);
+        int array_indice = 0;
+        char array_incorrectas[100];
+        
         printf("Hey, estas jugando al ahorcado. La palabra tiene %d letras. Inténtalo!\n", tamaño);
-
         for (int i = 0; i < tamaño; i++) {
             palabraCompletandose[i] = '_';
         }
-
         while (victoria != 1) {
             int encontrada = 0;
 
@@ -53,6 +52,7 @@ int main(void) {
                 vidas--;
             }
 
+           
             int completada = 1;
             for (int i = 0; i < tamaño; i++) {
                 if (palabraCompletandose[i] == '_') {
@@ -70,17 +70,37 @@ int main(void) {
                 printf("Perdiste! La palabra era: %s\n", palabraCompleta);
                 return 0;
             }
-
-            if (array_indice != 0) {
-                printf("Las letras incorrectas:");
-                for (int i = 0; i < array_indice; i++) {
-                    printf(" %c ", array_incorrectas[i]);
-                }
-                printf("\n");
+            if(array_indice != 0){
+            printf("Las letras incorrectas:");
+            for (int i = 0; i < array_indice; i++) {
+            printf(" %c ", array_incorrectas[i]);
             }
+            printf("\n");
+            }
+                    if(vidas == 4){
+            printf(" o \n");
+        }
+        if(vidas == 3){
+            printf("  o \n");
+            printf("  | \n");
+        }
+        if(vidas == 2){
+            printf("   o \n");
+            printf(" --| \n");
+
+        }
+        if(vidas == 1){
+            printf("   o \n");
+            printf(" --|-- \n");
+        }
+        if(vidas == 0){
+            printf("   o \n");
+            printf(" --|-- \n");
+            printf("  | | \n\n");
+
+        }
         }
     }
-
     fclose(fp);
     return 0;
 }
