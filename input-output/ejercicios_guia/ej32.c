@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-
 int main(void){
     char letra;
     int numero;
@@ -9,8 +8,8 @@ int main(void){
             for(int i = 0; i < numero; i++){
                 printf("%c", letra);    
             }
-        } else {
-            printf("%c", letra);       
+        } else{
+            printf("%c ", letra);        
         }
     }
     return 0;
