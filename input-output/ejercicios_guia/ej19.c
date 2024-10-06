@@ -77,7 +77,7 @@ int main(void) {
             }
             printf("\n");
             }
-                    if(vidas == 4){
+        if(vidas == 4){
             printf(" o \n");
         }
         if(vidas == 3){
