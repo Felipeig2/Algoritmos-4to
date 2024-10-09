@@ -1,0 +1,3 @@
+hola,como,estas
+espero,que
+muy,bien,ok,quedo,claro

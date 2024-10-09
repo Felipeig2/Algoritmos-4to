@@ -15,7 +15,7 @@ int main(int argc, char *argv[]){
         if(caracter != '\t' && caracter != ' ' && caracter != '\n'){
             letras++;
         }
-        else if (caracter == '\n'){
+        else if (caracter == '\n'){ 
             lineas++;
         }
         

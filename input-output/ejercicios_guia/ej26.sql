@@ -1,0 +1,1 @@
+INSERT INTO comidas (id_pago, monto, fecha) VALUES (5001, 250.00, '2024-10-05');
