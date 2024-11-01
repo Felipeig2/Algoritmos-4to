@@ -1,15 +1,37 @@
-    function setup() {
-    createCanvas(400, 400);
-  }
-  function ej11(unpoco){
-    unpoco += 10;
-    line(0, 350-unpoco, 50+unpoco, 350-unpoco);
-    line(50+unpoco, 350-unpoco, 50+unpoco, 400+unpoco);
-    ej11(unpoco);
-  }
+float x, y; 
+float a;    
+
+void setup() {
+  size(400, 350);
+  background(255);
   
-  function draw() {
-    background(200);
-    let unpoco = 0;
-    ej11(unpoco);
+  x = 0;
+  y = 350;
+  a = 0;
+  
+//  forward(100);
+  
+
+  float numero = 10; 
+
+  for (int i = 0; i < 90; i++) {
+    for (int j = 0; j < 2; j++) {
+      forward(numero); 
+      turn(90); 
+    }
+  
+    numero += 10;
   }
+} 
+
+void turn(float na) {
+  a += na; 
+}
+
+void forward(float d) { 
+  float nx = x + cos(radians(a)) * d; 
+  float ny = y - sin(radians(a)) * d; 
+  line(x, y, nx, ny); 
+  x = nx; 
+  y = ny;
+}
